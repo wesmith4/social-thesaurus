@@ -1,0 +1,6 @@
+<form action="/search" method="GET" id="sesarch-form">
+  <input type="text" name="term"
+  {{#if searchTerm}}value="{{searchTerm}}"{{/if}}
+  placeholder="Search for a word">
+  <button type="submit" id="search-button">Search</button>
+</form>

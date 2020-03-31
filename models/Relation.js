@@ -12,10 +12,10 @@ class Relation extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: [
+      /* required: [
         'first_word_id',
         'second_word_id'
-      ],
+      ], */
       properties: {
         id: {type: 'integer'},
         firstWordId: {type: 'integer'},

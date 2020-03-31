@@ -1,7 +1,8 @@
 <div id="allWords-sidebar">
-  <ul>
+  <ul class="collection">
+    <li class="collection-header center"><h4>Words</h4></li>
     {{#each allWords}}
-    <li>{{word}}</li>
+    <li class="collection-item"><a href="/search?term={{word}}">{{word}}</a></li>
     {{/each}}
   </ul>
 </div>

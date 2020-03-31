@@ -1,9 +1,42 @@
-<header>
-  <h1>The Social Thesaurus</h1>
-</header>
 
-{{> sidebar}}
 
-{{#if results}}
-{{> resultsPage}}
-{{/if}}
+<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">The Social Thesaurus</a>
+      {{!-- <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul> --}}
+    </div>
+  </nav>
+
+
+{{!-- Main row to contain all content --}}
+<div class="row">
+  {{!-- Left column for sidebar to contain all words --}}
+  <div class="col s4 grey lighten-1">
+    <div class="container">
+      {{> sidebar}}
+    </div>
+  </div>
+
+  {{!-- Main column with search, results, featured items --}}
+  <div class="col s8 teal lighten-2">
+    <div class="container">
+    {{!-- Row with search bar --}}
+    <div class="section white">
+      {{> search}}
+    </div>
+
+    {{!-- Row with results, if returned from search --}}
+    {{#if results}}
+    <div class="divider"></div>
+    <div class="section">
+      {{> resultsPage}}
+    </div>
+    {{/if}}
+    </div>
+
+  </div>
+</div>

@@ -10,26 +10,26 @@ router.get('/', async(request, response) => {
     .orderBy('word');
 
   response.render('main', { allWords });
-})
+});
 
 router.get('/search', async(request, response) => {
   // Gather search term from page request
   let searchTerm = request.query.term;
 
   // Query similar results from database
-  let results = await Word.query()
+  results = await Word.query()
     .where('word', 'ilike', `%${searchTerm}%`);
 
   // Check if there is an exact result in the database
   let exactResult = await Word.query()
     .where('word', searchTerm);
 
-  // If not, add the searched word as a new word
-  if (exactResult.length === 0) {
+  // If not, add the searched word as a new word (probably won't use this)
+  /* if (exactResult.length === 0) {
     await Word.query().insert({
       word: searchTerm
     });
-  }
+  } */
 
   // Query all words in the database, for the sidebar
   let allWords = await Word.query()
@@ -44,24 +44,35 @@ router.get('/search', async(request, response) => {
     word['relatedWords'] = relatedWords;
   }
 
+  results = (results.length > 0 ? results : false);
+
+
   // Render the page with the results
-  response.render('main', { results, searchTerm, allWords });
+  if (results) {
+    response.render('main', { results, searchTerm, allWords });
+  } else {
+    let noResults = true;
+    response.render('main', { noResults, allWords, searchTerm });
+  }
+
 });
 
 router.post('/new', async(request, response) => {
-  let newWord = request.body.new.toLowerCase();
-
-  await Word.query().insert({
-    word: newWord
-  });
-
-  response.redirect('/');
+  let newWord = request.body.new.toLowerCase().trim();
+  try {
+    await Word.query().insert({
+      word: newWord
+    });
+    response.redirect(`/search?term=${newWord}`);
+  } catch {
+    response.redirect('/');
+  }
 });
 
 router.post('/words/:wordId/relate', async(request, response) => {
   let thisWord = await Word.query()
     .where('id', Number(request.params.wordId));
-  let relatedWord = request.body.relatedWord;
+  let relatedWord = request.body.relatedWord.trim();
 
   let inDB = await Word.query()
     .where('word', relatedWord.toLowerCase());

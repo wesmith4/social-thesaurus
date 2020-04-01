@@ -1,7 +1,16 @@
-
-<form action="/search" method="GET" id="sesarch-form">
-  <input type="text" name="term"
-  {{#if searchTerm}}value="{{searchTerm}}"{{/if}}
-  placeholder="Search for a word">
-  <button type="submit" id="search-button">Search</button>
-</form>
+<div class="row">
+  <form action="/search" method="GET">
+    <div class="col s6 offset-s2">
+      <div class="input-field">
+        <i class="material-icons prefix">search</i>
+        <input type="text" name="term" placeholder="Type a word..."
+        {{#if searchTerm}}value="{{searchTerm}}">{{else}}autofocus>{{/if}}
+      </div>
+    </div>
+    <div class="col s2">
+      <div class="input-field left-align">
+        <button class="btn teal lighten-2 waves-effect waves-light" type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+</div>

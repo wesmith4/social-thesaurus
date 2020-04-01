@@ -1,0 +1,19 @@
+body {
+  height: 100%;
+}
+
+#main-row {
+  height: 100%;
+}
+
+#sidebar-column {
+  height: 100%;
+}
+
+#main-column {
+  height: 100%;
+}
+
+main {
+  height: 100%;
+}

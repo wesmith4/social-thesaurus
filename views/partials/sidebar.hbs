@@ -1,8 +1,27 @@
 <div id="allWords-sidebar">
-  <ul class="collection">
-    <li class="collection-header center"><h4>Words</h4></li>
+  <ul class="collection white">
+    <li class="collection-header center white"><h4>Words</h4></li>
+    <li class="collection-item">
+      <div class="row">
+        <form action="/new" method="POST">
+        <div class="col s9">
+          <div class="input-field">
+            <div class="container">
+              <input type="text" name="new" placeholder="Add word" class="valign-wrapper"
+              {{#if noResults}}value="{{searchTerm}}" autofocus{{/if}}>
+            </div>
+          </div>
+          </div>
+          <div class="col s3">
+            <div class="input-field">
+            <button id"new-word-button" class="btn-floating teal lighten-2 waves-effect waves-light {{#if noResults}}pulse{{/if}}" type="submit"><i class="material-icons">add</i></button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </li>
     {{#each allWords}}
-    <li class="collection-item"><a href="/search?term={{word}}">{{word}}</a></li>
+    <a class="collection-item hoverable" href="/search?term={{word}}">{{word}}</a>
     {{/each}}
   </ul>
 </div>

@@ -6,6 +6,7 @@ let session = require('express-session');
 let pg = require('pg');
 let Knex = require('knex');
 let { Model } = require('objection');
+let hbs = require('handlebars');
 
 let app = express();
 
@@ -19,6 +20,15 @@ app.engine('hbs', handlebars({
   extname: 'hbs',
   defaultLayout: 'layout'
 }));
+
+hbs.registerHelper('if_eq', function(a,b, options){
+  if (a==b) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
+
 
 app.root = (...args) => path.join(__dirname, ...args);
 app.inProduction = () => app.get('env') === 'production';

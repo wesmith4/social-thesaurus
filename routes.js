@@ -7,8 +7,13 @@ let Relation = require('./models/Relation');
 
 router.get('/', async(request, response) => {
   let allWords = await Word.query()
-    .orderBy('word');
+    .select('words.id', 'words.word')
+    .count('relations.id', {as: 'num_relations'})
+    .leftJoin('relations', 'relations.first_word_id', 'words.id')
+    .groupBy('words.id')
+    .orderBy('words.word');
 
+  console.log(allWords);
   response.render('main', { allWords });
 });
 

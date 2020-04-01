@@ -1,7 +1,7 @@
 
 <nav>
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo center">The Social Thesaurus</a>
+    <a href="/" class="brand-logo center">The Social Thesaurus</a>
     {{!-- <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li><a href="sass.html">Sass</a></li>
       <li><a href="badges.html">Components</a></li>
@@ -35,8 +35,8 @@
 
     {{#if noResults}}
       <div class="divider"></div>
-      <div class="section">
-        <h4>Your search did not give any results!</h4>
+      <div class="section white">
+        <h4 class="center-align">Your search did not give any results!</h4>
         <h4>Add "{{searchTerm}}" to word list?</h4><span><form action="/new" method="POST">
           <input type="hidden" name="new" value="{{searchTerm}}">
           <button type="submit">Add</button>

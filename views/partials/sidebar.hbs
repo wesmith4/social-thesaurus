@@ -20,8 +20,16 @@
         </form>
       </div>
     </li>
+    <li class="collection-item">
+        <span style="text-decoration: underline;">Word</span><span class="right" style="text-decoration: underline;">Relations</span>
+    </li>
     {{#each allWords}}
-    <a class="collection-item hoverable" href="/search?term={{word}}">{{word}}</a>
+    <a class="collection-item hoverable" href="/search?term={{word}}">
+      <div>
+        <span class="left-align">{{word}}</span>
+        <span class="right">{{numRelations}}</span>
+      </div>
+    </a>
     {{/each}}
   </ul>
 </div>

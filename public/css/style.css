@@ -3,6 +3,11 @@ body {
   background-color: #4db6ac !important;
 }
 
+#navbar {
+  /* position: fixed; */
+}
+
+
 #main-row {
   height: 100%;
 }
@@ -17,4 +22,10 @@ body {
 
 main {
   height: 100%;
+}
+
+#allWords-sidebar {
+  overflow-y: scroll;
+  min-width: 200px;
+  height: 50%;
 }

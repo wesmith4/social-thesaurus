@@ -25,20 +25,15 @@ router.get('/search', async(request, response) => {
   results = await Word.query()
     .where('word', 'ilike', `%${searchTerm}%`);
 
-  // Check if there is an exact result in the database
-  let exactResult = await Word.query()
-    .where('word', searchTerm);
-
-  // If not, add the searched word as a new word (probably won't use this)
-  /* if (exactResult.length === 0) {
-    await Word.query().insert({
-      word: searchTerm
-    });
-  } */
 
   // Query all words in the database, for the sidebar
   let allWords = await Word.query()
-    .orderBy('word');
+    .select('words.id', 'words.word')
+    .count('relations.id', {as: 'num_relations'})
+    .leftJoin('relations', 'relations.first_word_id', 'words.id')
+    .groupBy('words.id')
+    .orderBy('words.word');
+
 
   for (let word of results) {
     let relatedWords = await Relation.query()

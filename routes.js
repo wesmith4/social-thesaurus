@@ -1,8 +1,27 @@
 let Router = require('express-promise-router');
 let router = new Router();
+let fetch = require('node-fetch');
+
 
 let Word = require('./models/Word');
 let Relation = require('./models/Relation');
+let Definition = require('./models/Definition');
+
+
+async function loadDefinitions(word) {
+  // let obj;
+  let data = await fetch(`https://wordsapiv1.p.rapidapi.com/words/${word}/definitions`, {
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+      "x-rapidapi-key": "b10667d4a5mshf835a0dbd702cbfp16d05ejsn02b01fe3136f"
+    }
+  }).then(response => response.json()).catch(err => {
+    console.log(err);
+  });
+
+  return data;
+}
 
 
 router.get('/', async(request, response) => {
@@ -42,13 +61,55 @@ router.get('/search', async(request, response) => {
       .join('words', 'words.id', 'relations.second_word_id')
 
     word['relatedWords'] = relatedWords;
+
+    // This produces an array of query results
+    let definitions = await Definition.query()
+      .where('word_id', word.id)
+      .limit(1);
+
+    if (definitions.length === 0) {
+      let apiResult = await loadDefinitions(word.word);
+      for (let def of apiResult.definitions) {
+        await Definition.query().insert({
+          wordId: word.id,
+          definition: def.definition,
+          partOfSpeech: def.partOfSpeech
+        });
+      }
+    };
+
+      // console.log(typeof data);
+      // console.log(data);
+
+      /* console.log(data.definitions);
+      for (let def of data.definitions) {
+        await Definition.query().insert({
+          wordId: word.id,
+          definition: def.definition,
+          partOfSpeech: def.partOfSpeech
+        });
+      } */
+
+    definitions = await Definition.query()
+      .select('definition', 'part_of_speech')
+      .where('word_id', word.id)
+      .limit(3);
+
+    word['definitions'] = definitions;
   }
+
+
+
+
 
   results = (results.length > 0 ? results : false);
 
 
+
+
   // Render the page with the results
   if (results) {
+    console.log(results);
     response.render('main', { results, searchTerm, allWords });
   } else {
     let noResults = true;

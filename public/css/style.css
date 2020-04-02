@@ -9,6 +9,13 @@ body {
   height: 10vh;
 }
 
+.collapsible-body {
+  padding: .5rem 2rem 2rem 2rem !important;
+}
+
+.partOfSpeech {
+  font-size: 1.25rem;
+}
 
 #main-row {
   height: 90vh;

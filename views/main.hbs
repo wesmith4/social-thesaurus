@@ -1,5 +1,11 @@
+<script>
+  $(document).ready(function(){
+    $('.pushpin').pushpin();
+  });
 
-<nav id="navbar">
+</script>
+
+<nav id="navbar" class="pushpin">
   <div class="nav-wrapper">
     <a href="/" class="brand-logo center">The Social Thesaurus</a>
     {{!-- <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -10,9 +16,9 @@
   </div>
 </nav>
 
-<main>
+<main style="position: relative;">
 {{!-- Main row to contain all content --}}
-<div class="row" id="main-row" style="height: 100%;">
+<div class="row" id="main-row">
   {{!-- Left column for sidebar to contain all words --}}
   <div class="col s3 brown lighten-3" id="sidebar-column">
     {{> sidebar}}

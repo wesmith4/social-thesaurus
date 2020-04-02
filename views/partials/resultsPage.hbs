@@ -8,7 +8,7 @@
 </script>
 
 <div id="resultsPage">
-  <ul class="collapsible popout">
+  <ul class="collapsible popout" id="results">
     {{#each results}}
       <li {{#if_eq word ../searchTerm}}class="active"{{/if_eq}}>
         <div class="collapsible-header active hoverable"><h4>{{word}}</h4></div>
@@ -39,5 +39,4 @@
       </li>
     {{/each}}
   </ul>
-
 </div>

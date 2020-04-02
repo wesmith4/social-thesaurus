@@ -4,20 +4,35 @@ body {
 }
 
 #navbar {
-  /* position: fixed; */
+  position: fixed;
+  z-index: +2;
+  height: 10vh;
 }
 
 
 #main-row {
-  height: 100%;
+  height: 90vh;
 }
 
 #sidebar-column {
   height: 100%;
+  overflow: hidden;
+  margin-top: 10vh;
 }
 
 #main-column {
   height: 100%;
+  overflow: scroll;
+  margin-top: 10vh;
+}
+
+#resultsPage {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#results {
+  overflow-y: scroll;
 }
 
 main {
@@ -25,7 +40,22 @@ main {
 }
 
 #allWords-sidebar {
+  min-width: 15vw;
+  height: 95%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
+#not-scrollable {
+  height: 40%;
+  margin-bottom: 0 !important;
+  border: none !important;
+  z-index: +2;
+}
+
+#scrollable {
+  margin-top: 0 !important;
+  border: none !important;
+  height: 60%;
   overflow-y: scroll;
-  min-width: 200px;
-  height: 50%;
 }

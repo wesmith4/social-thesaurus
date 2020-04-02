@@ -1,5 +1,5 @@
 <div id="allWords-sidebar">
-  <ul class="collection white">
+  <ul class="collection white" id="not-scrollable">
     <li class="collection-header center white"><h4>Words</h4></li>
     <li class="collection-item">
       <div class="row">
@@ -22,6 +22,8 @@
     <li class="collection-item">
         <span style="text-decoration: underline;">Word</span><span class="right" style="text-decoration: underline;">Relations</span>
     </li>
+  </ul>
+  <ul class="collection white" id="scrollable">
     {{#each allWords}}
     <a class="collection-item hoverable" href="/search?term={{word}}">
       <div>

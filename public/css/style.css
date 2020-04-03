@@ -29,17 +29,25 @@ body {
 
 #main-column {
   height: 100%;
-  overflow: scroll;
+  overflow: hidden;
+  overflow-y: scroll;
   margin-top: 10vh;
 }
 
+#search {
+  margin: 2.5% 5% 0 5% !important;
+  height: 15% !important;
+}
+
 #resultsPage {
+  height: 80% !important;
+  margin-top: 2.5% !important;
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: scroll !important;
 }
 
 #results {
-  overflow-y: scroll;
+  overflow-y: scroll !important;
 }
 
 main {

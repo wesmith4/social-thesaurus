@@ -42,7 +42,8 @@ router.get('/search', async(request, response) => {
 
   // Query similar results from database
   results = await Word.query()
-    .where('word', 'ilike', `%${searchTerm}%`);
+    .where('word', 'ilike', `%${searchTerm}%`)
+    .orderBy('words.word');
 
 
   // Query all words in the database, for the sidebar

@@ -8,8 +8,8 @@
 </script>
 
 <div id="resultsPage">
-  <div class="container">
-  <ul class="collapsible popout" id="results">
+  <div class="container" style="overflow-y: scroll;">
+  <ul class="collapsible popout" id="results" style="overflow-y: scroll;">
     {{#each results}}
       <li {{#if_eq word ../searchTerm}}class="active"{{/if_eq}}>
         <div class="collapsible-header active hoverable"><h4>{{word}}</h4></div>

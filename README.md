@@ -1,5 +1,10 @@
 # social-thesaurus
 Crowd-sourced thesaurus on a web page
+http://social-thesaurus.herokuapp.com
+
+## Collaborators
+- Will Smith ([GitHub](https://github.com/wesmith4))
+- Lily Korir ([GitHub](https://github.com/liliankorir))
 
 ## File structure
 

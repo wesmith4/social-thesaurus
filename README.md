@@ -1,5 +1,6 @@
 # social-thesaurus
-Crowd-sourced thesaurus on a web page
+A crowd-sourced thesaurus, with definitions from an API call.
+
 http://social-thesaurus.herokuapp.com
 
 ## Collaborators
